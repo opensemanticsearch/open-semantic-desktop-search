@@ -12,7 +12,7 @@
 
 
 # Temp files (f.e. temporary extraction of archives)
-config['tmp'] = '/media/sf_index/'
+config['tmp'] = '/media/sf_index/tmp/'
 
 
 #
