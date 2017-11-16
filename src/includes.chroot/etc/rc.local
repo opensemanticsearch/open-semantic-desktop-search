@@ -13,4 +13,6 @@
 
 /usr/bin/mount_shared_folders.py
 
+mkdir -p /media/sf_index/tmp
+
 exit 0
