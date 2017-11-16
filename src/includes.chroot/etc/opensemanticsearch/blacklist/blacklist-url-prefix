@@ -1,0 +1,6 @@
+# Blacklist of URL Prefixes like domains or paths
+
+# do not index the index files itself
+file:///media/sf_index/
+file:///home/user/Documents/sf_index/
+file:///home/user/Dokumente/sf_index/

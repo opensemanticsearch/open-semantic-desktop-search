@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# data enrichment with OCR Plugins
+# including files within containers like ZIP archives, too (therefore container plugins)
+# with progressbar by Zenity GUI
+
+# OCR is CPU expensive, so niceness 19 so other processes like search engine or browser wont be blocked
+
+nice -n 19 opensemanticsearch-enrich -p enhance_pst,enhance_zip,enhance_pdf_ocr | zenity --progress --pulsate --auto-close --no-cancel --title="OCR for text in images" --text="Try to get text out of image file formats by optical character recognition (OCR) ..."

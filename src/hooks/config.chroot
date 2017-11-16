@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# User and passwords
+
+groupadd -g 1000 user
+useradd -g user -G dialout,cdrom,floppy,audio,video,plugdev -u 1000 user -s /bin/bash
+echo "user:live" | chpasswd
+
+chown -R user /home/user
+chgrp -R user /home/user
+
+# add Virtual Box shared folder rights group to user so allowed to index documents from shared folders
+usermod -a -G vboxsf user
+
+# disable apache sites and enable only our localhost site with disabled logging
+a2dissite '*'
+a2ensite localhost.conf

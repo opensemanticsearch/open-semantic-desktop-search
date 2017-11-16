@@ -1,0 +1,70 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version:0.18f:$
+Arch:x86_64-gcc3:$
+
+[PLUGINS]
+librhythmbox-itms-detection-plugin.so:$
+/usr/lib/mozilla/plugins/librhythmbox-itms-detection-plugin.so:$
+:$
+1474415578000:0:0:0:$
+This plug-in detects the presence of iTunes when opening iTunes Store URLs in a web page with Firefox.:$
+iTunes Application Detector:$
+1
+0:application/itunes-plugin:::$
+IcedTeaPlugin.so:$
+/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so:$
+:$
+1484408814000:0:0:0:$
+The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
+IcedTea-Web Plugin (using IcedTea-Web 1.6.2 (1.6.2-3.1)):$
+38
+0:application/x-java-vm:IcedTea:class,jar:$
+1:application/x-java-applet:IcedTea:class,jar:$
+2:application/x-java-applet;version=1.1:IcedTea:class,jar:$
+3:application/x-java-applet;version=1.1.1:IcedTea:class,jar:$
+4:application/x-java-applet;version=1.1.2:IcedTea:class,jar:$
+5:application/x-java-applet;version=1.1.3:IcedTea:class,jar:$
+6:application/x-java-applet;version=1.2:IcedTea:class,jar:$
+7:application/x-java-applet;version=1.2.1:IcedTea:class,jar:$
+8:application/x-java-applet;version=1.2.2:IcedTea:class,jar:$
+9:application/x-java-applet;version=1.3:IcedTea:class,jar:$
+10:application/x-java-applet;version=1.3.1:IcedTea:class,jar:$
+11:application/x-java-applet;version=1.4:IcedTea:class,jar:$
+12:application/x-java-applet;version=1.4.1:IcedTea:class,jar:$
+13:application/x-java-applet;version=1.4.2:IcedTea:class,jar:$
+14:application/x-java-applet;version=1.5:IcedTea:class,jar:$
+15:application/x-java-applet;version=1.6:IcedTea:class,jar:$
+16:application/x-java-applet;version=1.7:IcedTea:class,jar:$
+17:application/x-java-applet;version=1.8:IcedTea:class,jar:$
+18:application/x-java-applet;jpi-version=1.8.0_50:IcedTea:class,jar:$
+19:application/x-java-bean:IcedTea:class,jar:$
+20:application/x-java-bean;version=1.1:IcedTea:class,jar:$
+21:application/x-java-bean;version=1.1.1:IcedTea:class,jar:$
+22:application/x-java-bean;version=1.1.2:IcedTea:class,jar:$
+23:application/x-java-bean;version=1.1.3:IcedTea:class,jar:$
+24:application/x-java-bean;version=1.2:IcedTea:class,jar:$
+25:application/x-java-bean;version=1.2.1:IcedTea:class,jar:$
+26:application/x-java-bean;version=1.2.2:IcedTea:class,jar:$
+27:application/x-java-bean;version=1.3:IcedTea:class,jar:$
+28:application/x-java-bean;version=1.3.1:IcedTea:class,jar:$
+29:application/x-java-bean;version=1.4:IcedTea:class,jar:$
+30:application/x-java-bean;version=1.4.1:IcedTea:class,jar:$
+31:application/x-java-bean;version=1.4.2:IcedTea:class,jar:$
+32:application/x-java-bean;version=1.5:IcedTea:class,jar:$
+33:application/x-java-bean;version=1.6:IcedTea:class,jar:$
+34:application/x-java-bean;version=1.7:IcedTea:class,jar:$
+35:application/x-java-bean;version=1.8:IcedTea:class,jar:$
+36:application/x-java-bean;jpi-version=1.8.0_50:IcedTea:class,jar:$
+37:application/x-java-vm-npruntime:IcedTea::$
+libgnome-shell-browser-plugin.so:$
+/usr/lib/mozilla/plugins/libgnome-shell-browser-plugin.so:$
+:$
+1493225276000:0:0:0:$
+This plugin provides integration with GNOME Shell for live extension enabling and disabling. It can be used only by extensions.gnome.org:$
+GNOME Shell Integration:$
+1
+0:application/x-gnome-shell-integration:GNOME Shell Integration Dummy Content-Type::$
+
+[INVALID]

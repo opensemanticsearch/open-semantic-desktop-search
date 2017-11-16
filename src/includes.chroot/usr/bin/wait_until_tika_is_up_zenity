@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# start waiting for Tika Server with progressbar by Zenity GUI
+wait_until_tika_is_up | zenity --progress --pulsate --auto-close --no-cancel --title="Waiting for Tika text extraction server" --text="Waiting until Tika text extraction server is up ..."

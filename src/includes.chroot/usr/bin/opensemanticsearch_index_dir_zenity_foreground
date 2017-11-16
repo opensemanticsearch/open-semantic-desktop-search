@@ -1,0 +1,6 @@
+#!/bin/sh
+
+DIR=$1
+
+# start in the background a opensemanticsearch-index-dir with progressbar by zenity gui
+opensemanticsearch-index-dir "$DIR" | zenity --progress --pulsate --auto-close --no-cancel --title="Indexing for search" --text="Indexing $DIR ..."

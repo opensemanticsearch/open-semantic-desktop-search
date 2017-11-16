@@ -1,0 +1,12 @@
+#!/bin/bash
+
+image="open-semantic-desktop-search"
+imagesize="50G"
+vmdebootstrap --mirror=http://ftp.de.debian.org/debian/ --verbose --image=${image}.img --size=${imagesize} --enable-dhcp --grub --sparse --sudo --configure-apt --customize=./customize/customize.sh
+
+#convert raw image to vdi for less file size
+echo 'Convert Image file to VirtualBox format'
+qemu-img convert -f raw -O vdi ${image}.img ${image}.vdi
+
+# Now boot the VM image, so internal /usr/src/customize/install.sh which needs full environment of guest system will run within VM
+# The script will install Virtualbox extensions and dependencies of Open Semantic Search server package, than delete itself and halt the VM

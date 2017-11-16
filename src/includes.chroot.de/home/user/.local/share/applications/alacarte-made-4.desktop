@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Index documents
+Exec=/usr/bin/opensemanticsearch_index_dir_zenity /home/user/Dokumente
+Type=Application
+Icon=document-open-symbolic
