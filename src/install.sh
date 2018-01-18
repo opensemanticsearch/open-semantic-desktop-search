@@ -12,20 +12,20 @@ export SYSTEMD_PAGER=""
 
 # update package lists and sources to contrib and non-free
 cat <<EOF > ${rootdir}/etc/apt/sources.list
-deb http://ftp2.de.debian.org/debian/ stable main contrib non-free
+deb http://deb.debian.org/debian/ stable main contrib non-free
 deb http://security.debian.org/ stable/updates main contrib non-free
 EOF
 
 apt-get update
-
+apt-get upgrade
 
 # install VM guest additions so later no problems
-apt-get -y install linux-headers-amd64 build-essential module-assistant
+apt-get -y install linux-image-amd64 linux-headers-amd64 build-essential module-assistant
 
 # mount VM guest additions
 mkdir /tmp/cdrom
 mount /dev/cdrom /tmp/cdrom
-sh /tmp/cdrom/VBoxLinuxAdditions.run
+sh /tmp/cdrom/VBoxLinuxAdditions.run || exit
 umount /dev/cdrom
 
 # install first, so later no problems

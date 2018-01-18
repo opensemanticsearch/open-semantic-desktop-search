@@ -1,0 +1,5 @@
+linux-image-amd64
+linux-headers-amd64
+build-essential
+module-assistant
+acpid
