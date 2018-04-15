@@ -42,6 +42,16 @@ do
     debconf-set-selections /usr/src/customize/debconf/${debconffile}
 done
 
+echo 'Debconf (localization)'
+
+debconffilelist=`ls /usr/src/customize/debconf.${localization}`
+
+for debconffile in ${debconffilelist};
+do
+    echo "Configurating debconf with ${debconffile}"
+    debconf-set-selections /usr/src/customize/debconf.${localization}/${debconffile}
+done
+
 
 # packages lists
 packagelists=`ls /usr/src/customize/package-lists`
