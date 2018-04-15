@@ -13,7 +13,7 @@ evince
 gnome-terminal
 zenity
 tesseract-ocr
-tesseract-ocr-eng
+tesseract-ocr-all
 scantailor
 httrack
 webhttrack
