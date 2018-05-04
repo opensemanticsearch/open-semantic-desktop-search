@@ -92,8 +92,8 @@ mkdir /media/sf_index
 mkdir /media/sf_index/tmp
 
 # link Solr index to shared folder
-rm -r /var/solr/data/core1/data
-ln -s /media/sf_index /var/solr/data/core1/data
+rm -r /var/solr/data/opensemanticsearch/data
+ln -s /media/sf_index /var/solr/data/opensemanticsearch/data
 
 # allow Solr to write to index directory, if not external index (so mounted to Virtual Box shared folder and rights from vboxsf group)
 chown solr:solr /media/sf_index
