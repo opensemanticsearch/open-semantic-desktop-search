@@ -8,6 +8,8 @@
 
 - Virtual Box guest additions ISO
 
+- vmdebootstrap ("apt-get install vmdebootstrap")
+
 
 # Build
 
@@ -19,7 +21,7 @@
 
 - Config VM system settings like RAM and how many CPUs to use
 
-- Config the Virtual Box guest additions as CD ROM
+- Config the Virtual Box guest additions as CD ROM in Virtual Box Settings / Storage / Attributes / Optical Drive
 
 - Run this VM so installation within VM environment starts
 
