@@ -8,7 +8,7 @@
 
 - Virtual Box guest additions ISO
 
-- vmdebootstrap ("apt-get install vmdebootstrap")
+- Debian package vmdebootstrap (Installation: "apt-get install vmdebootstrap")
 
 
 # Build
