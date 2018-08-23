@@ -1,7 +1,7 @@
 #!/bin/sh
 
 localization="en"
-# localization="de"
+#localization="de"
 
 # no questions from Debian package manager
 export DEBIAN_FRONTEND=noninteractive
@@ -113,6 +113,9 @@ usermod -a -G vboxsf opensemanticetl
 
 # delete apt package cache
 apt-get clean
+
+# set localization in Open Semantic Search setup
+#curl 'http://localhost/search-apps/setup/set_language?language=de&languages=en,de&languagesforce=de&ocrlanguages=deu'
 
 # delete installation sources and this script
 rm -r /usr/src/customize
