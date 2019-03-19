@@ -15,3 +15,6 @@ usermod -a -G vboxsf user
 # disable apache sites and enable only our localhost site with disabled logging
 a2dissite '*'
 a2ensite localhost.conf
+
+# install flower for queue management
+pip3 install flower
