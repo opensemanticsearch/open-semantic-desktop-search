@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#localization="en"
-localization="de"
+localization="en"
+#localization="de"
 
 # no questions from Debian package manager
 export DEBIAN_FRONTEND=noninteractive
@@ -31,6 +31,14 @@ umount /dev/cdrom
 
 # install first, so later no problems
 apt-get -y install dbus
+
+# add swapfile
+fallocate -l 4G ${rootdir}/swapfile
+mkswap /swapfile
+chmod 600 ${rootdir}/swapfile
+cat <<EOF >> ${rootdir}/etc/fstab
+/swapfile swap swap defaults 0 0
+EOF
 
 # configure debconf options
 echo 'Debconf'
@@ -121,10 +129,11 @@ usermod -a -G vboxsf opensemanticetl
 apt-get clean
 
 # set localization in Open Semantic Search setup
-curl 'http://localhost/search-apps/setup/set_language?language=de&languages=en,de&languagesforce=de&ocrlanguages=deu'
+#curl 'http://localhost/search-apps/setup/set_language?language=de&languages=en,de&languagesforce=de&ocrlanguages=deu'
 
-# delete installation sources and this script
+# delete installation sources and this script and its temporary startscript /etc/rc.local
 rm -r /usr/src/customize
+rm /etc/rc.local
 
 # delete deleted data on filesystem by filling up ueros, which will increase compression rate on appliance export
 dd if=/dev/zero of=/ZEROS bs=1M
