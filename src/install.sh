@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 localization="en"
 #localization="de"
@@ -16,6 +16,9 @@ deb http://deb.debian.org/debian/ stable main contrib non-free
 deb http://security.debian.org/ stable/updates main contrib non-free
 EOF
 
+# wait until network / dns is up
+until $(ping -c1 deb.debian.org &>/dev/null); do :; done
+
 apt-get update
 apt-get upgrade
 
@@ -25,7 +28,7 @@ apt-get -y install linux-image-amd64 linux-headers-amd64 build-essential module-
 # mount VM guest additions
 mkdir /tmp/cdrom
 mount /dev/cdrom /tmp/cdrom
-sh /tmp/cdrom/VBoxLinuxAdditions.run || exit
+sh /tmp/cdrom/VBoxLinuxAdditions.run
 umount /dev/cdrom
 
 # install first, so later no problems
