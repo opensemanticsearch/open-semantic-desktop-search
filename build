@@ -43,5 +43,4 @@ VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Cont
 
 # export appliance
 echo "Exporting Appliance"
-VBoxManage export OpenSemanticDesktopSearchBuildVM --output open-semantic-desktop-search.ova --options manifest,nomacs --vsys 0 --vmname "Open Semantic Desktop Search" --product "Open Semantic Desktop Search" --producturl http://opensemanticsearch.org
-
+VBoxManage export OpenSemanticDesktopSearchBuildVM --output open-semantic-desktop-search.ova --options manifest,nomacs --vsys 0 --vmname "Open Semantic Desktop Search" --product "Open Semantic Desktop Search" --producturl https://opensemanticsearch.org
