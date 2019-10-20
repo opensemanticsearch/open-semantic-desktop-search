@@ -20,12 +20,11 @@ VBoxManage createvm --name OpenSemanticDesktopSearchBuildVM --ostype Debian_64 -
 VBoxManage modifyvm OpenSemanticDesktopSearchBuildVM --cpus 2 --memory 5000
 
 # set build image file as virtual HD
-VBoxManage storagectl OpenSemanticDesktopSearchBuildVM --name "SATA Controller" --add sata --bootable on
-VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium open-semantic-desktop-search.vdi
+VBoxManage storagectl OpenSemanticDesktopSearchBuildVM --name "IDE Controller" --add ide --bootable on
+VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium open-semantic-desktop-search.vdi
 
 # set virtual CDROM to Virtual Box guest additions so we can install them in VM
-VBoxManage storagectl OpenSemanticDesktopSearchBuildVM --name "IDE Controller" --add ide
-VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium /usr/share/virtualbox/VBoxGuestAdditions.iso
+VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /usr/share/virtualbox/VBoxGuestAdditions.iso
 
 # Now start the VM image, so internal /usr/src/customize/install.sh which needs full environment of guest system will run within VM
 # The script will install Virtualbox extensions and dependencies of Open Semantic Search server package, than delete itself and halt the VM
@@ -39,7 +38,7 @@ do
 done
 
 # remove no more used virtual CD with Virtual Box additions so it will not be shipped in appliance export and not be indexed on booting the search VM
-VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium none
+VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium emptydrive
 
 # export appliance
 echo "Exporting Appliance"
