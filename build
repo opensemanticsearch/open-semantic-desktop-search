@@ -21,7 +21,7 @@ VBoxManage modifyvm OpenSemanticDesktopSearchBuildVM --cpus 2 --memory 5000
 
 # set build image file as virtual HD
 VBoxManage storagectl OpenSemanticDesktopSearchBuildVM --name "SATA Controller" --add sata --bootable on
-#VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium open-semantic-desktop-search.vdi
+VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium open-semantic-desktop-search.vdi
 
 # set virtual CDROM to Virtual Box guest additions so we can install them in VM
 VBoxManage storagectl OpenSemanticDesktopSearchBuildVM --name "IDE Controller" --add ide
