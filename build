@@ -17,7 +17,7 @@ rm ${image}.img
 VBoxManage createvm --name OpenSemanticDesktopSearchBuildVM --ostype Debian_64 --register
 
 # set vCPUs and virtual RAM
-VBoxManage modifyvm OpenSemanticDesktopSearchBuildVM --cpus 2 --memory 5000
+VBoxManage modifyvm OpenSemanticDesktopSearchBuildVM --cpus 2 --memory 5000 --vram 16
 
 # set build image file as virtual HD
 VBoxManage storagectl OpenSemanticDesktopSearchBuildVM --name "IDE Controller" --add ide --bootable on
