@@ -1,7 +1,0 @@
-[Desktop Entry]
-Comment=Search
-Terminal=false
-Name=Search
-Exec=firefox http://localhost/search
-Type=Application
-Icon=preferences-system-search-symbolic

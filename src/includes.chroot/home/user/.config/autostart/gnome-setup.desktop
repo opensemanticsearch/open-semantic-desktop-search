@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Initial gnome setup for Open Semantic Desktop Search
+Type=Application
+NoDisplay=true
+Exec=/home/user/gnome-setup.sh
