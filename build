@@ -3,6 +3,9 @@
 image="open-semantic-desktop-search"
 imagesize="60G"
 
+# temporary Virtual Box VM name while build
+VMNAME=OpenSemanticSearchBuildVM$$
+
 # install Debian to image file and run vmdebootstrap customize script
 vmdebootstrap --verbose --image=${image}.img --size=${imagesize} --enable-dhcp --grub --sparse --sudo --configure-apt --customize=./customize/customize.sh
 
@@ -14,32 +17,32 @@ qemu-img convert -f raw -O vdi ${image}.img ${image}.vdi
 rm ${image}.img
 
 # Create Virtual Box VM
-VBoxManage createvm --name OpenSemanticDesktopSearchBuildVM --ostype Debian_64 --register
+VBoxManage createvm --name ${VMNAME} --ostype Debian_64 --register
 
-# set vCPUs and virtual RAM
-VBoxManage modifyvm OpenSemanticDesktopSearchBuildVM --cpus 2 --memory 5000 --vram 16
+# set vCPUs, graphics controller and virtual RAM
+VBoxManage modifyvm ${VMNAME} --cpus 2 --memory 5000 --vram 16 --graphicscontroller vmsvga
 
 # set build image file as virtual HD
-VBoxManage storagectl OpenSemanticDesktopSearchBuildVM --name "IDE Controller" --add ide --bootable on
-VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium open-semantic-desktop-search.vdi
+VBoxManage storagectl ${VMNAME} --name "IDE Controller" --add ide --bootable on
+VBoxManage storageattach ${VMNAME} --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium open-semantic-desktop-search.vdi
 
 # set virtual CDROM to Virtual Box guest additions so we can install them in VM
-VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /usr/share/virtualbox/VBoxGuestAdditions.iso
+VBoxManage storageattach ${VMNAME} --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /usr/share/virtualbox/VBoxGuestAdditions.iso
 
 # Now start the VM image, so internal /usr/src/customize/install.sh which needs full environment of guest system will run within VM
 # The script will install Virtualbox extensions and dependencies of Open Semantic Search server package, than delete itself and halt the VM
-VBoxManage startvm OpenSemanticDesktopSearchBuildVM --type headless
+VBoxManage startvm ${VMNAME} --type headless
 
 # wait until VM shut down
 echo "Waiting until VM installed packages and shuts down"
-while VBoxManage showvminfo --machinereadable OpenSemanticDesktopSearchBuildVM | grep --quiet 'VMState="running"';
+while VBoxManage showvminfo --machinereadable ${VMNAME} | grep --quiet 'VMState="running"';
 do
   sleep 3
 done
 
 # remove no more used virtual CD with Virtual Box additions so it will not be shipped in appliance export and not be indexed on booting the search VM
-VBoxManage storageattach OpenSemanticDesktopSearchBuildVM --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium emptydrive
+VBoxManage storageattach ${VMNAME} --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium emptydrive
 
 # export appliance
 echo "Exporting Appliance"
-VBoxManage export OpenSemanticDesktopSearchBuildVM --output open-semantic-desktop-search.ova --options manifest,nomacs --vsys 0 --vmname "Open Semantic Desktop Search" --product "Open Semantic Desktop Search" --producturl https://opensemanticsearch.org
+VBoxManage export ${VMNAME} --output open-semantic-desktop-search.ova --options manifest,nomacs --vsys 0 --vmname "Open Semantic Desktop Search" --product "Open Semantic Desktop Search" --producturl https://opensemanticsearch.org
