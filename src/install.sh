@@ -118,6 +118,18 @@ usermod -a -G vboxsf opensemanticetl
 # set localization in Open Semantic Search setup
 #curl 'http://localhost/search-apps/setup/set_language?language=de&languages=en,de&languagesforce=de&ocrlanguages=deu'
 
+#
+# set default password "live" for Django admin user "admin"
+#
+
+# uncommented yet, since needs Django >= 3
+#export DJANGO_SUPERUSER_PASSWORD=live
+#python3 /var/lib/opensemanticsearch/manage.py createsuperuser --noinput --username admin --email user@localhost
+
+# until then use alternate: create superuser and set password to "live" by Python Django shell
+python3 /var/lib/opensemanticsearch/manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'user@localhost', 'live')"
+
+
 # delete apt package cache
 apt-get clean
 
