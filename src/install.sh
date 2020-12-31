@@ -9,6 +9,10 @@ export DEBIAN_FRONTEND=noninteractive
 # no paging (wait for user scrolling) while Solr installation script
 export SYSTEMD_PAGER=""
 
+# User and passwords
+groupadd -g 1000 user
+useradd -g user -G dialout,cdrom,floppy,audio,video,plugdev -u 1000 user -s /bin/bash
+echo "user:live" | chpasswd
 
 # update package lists and sources to contrib and non-free
 cat <<EOF > ${rootdir}/etc/apt/sources.list
@@ -108,8 +112,18 @@ cp -a /usr/src/customize/includes.chroot/* /
 # copy files for language to root dir
 cp -a /usr/src/customize/includes.chroot.${localization}/* /
 
-# run config script
-/usr/src/customize/hooks/config.chroot
+chown -R user /home/user
+chgrp -R user /home/user
+
+# add Virtual Box shared folder rights group to user so allowed to index documents from shared folders
+usermod -a -G vboxsf user
+
+# disable apache sites and enable only our localhost site with disabled logging
+a2dissite '*'
+a2ensite localhost.conf
+
+# install flower for queue management
+pip3 install flower
 
 # add solr and user to group vboxsf, so they have access to shared folders of host system
 usermod -a -G vboxsf solr
