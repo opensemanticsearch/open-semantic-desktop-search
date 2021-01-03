@@ -122,12 +122,18 @@ usermod -a -G vboxsf user
 a2dissite '*'
 a2ensite localhost.conf
 
-# install flower for queue management
-pip3 install flower
-
 # add solr and user to group vboxsf, so they have access to shared folders of host system
 usermod -a -G vboxsf solr
 usermod -a -G vboxsf opensemanticetl
+
+# install flower for queue management
+pip3 install flower
+
+# Add user so flower service can run as own user like set in config /etc/systemd/system/flower.service
+adduser --system --disabled-password flower
+
+# start this flower service while booting
+systemctl enable flower
 
 # set localization in Open Semantic Search setup
 #curl 'http://localhost/search-apps/setup/set_language?language=de&languages=en,de&languagesforce=de&ocrlanguages=deu'

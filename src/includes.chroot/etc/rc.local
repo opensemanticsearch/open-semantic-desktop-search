@@ -14,7 +14,4 @@
 # create temp dir on shared folder / host
 mkdir -p /media/sf_index/tmp
 
-# start flower server in background
-flower &
-
 exit 0
